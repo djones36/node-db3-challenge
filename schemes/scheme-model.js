@@ -22,10 +22,10 @@ function findById(id) {
 }
 
 function findSteps(id) {
-    return db('steps')
-        .join('schemes', 'steps.scheme_id', 'schemes.id')
-        .select('*')
-        .where('scheme_id', '=', id)
+    return db('steps as s')
+        .join('schemes as sc', 's.scheme_id', 'sc.id')
+        .select('s.id', 'sc.scheme_name', 's.step_number', 's.instructions')
+        .where('s.scheme_id', '=', id)
 }
 
 function add() {
