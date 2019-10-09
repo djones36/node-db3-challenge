@@ -17,22 +17,22 @@ function find() {
     return db('schemes')
 }
 
-function findById() {
-    return
+function findById(id) {
+    return db('schemes').where({ id }).first();
 }
 
 function findSteps() {
-    return
+    return db('schemes')
 }
 
 function add() {
-    return
+    return db('schemes')
 }
 
 function update() {
-    return
+    return db('schemes')
 }
 
 function remove() {
-    return
+    return db('schemes')
 }
