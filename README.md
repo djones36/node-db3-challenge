@@ -1,5 +1,5 @@
 # Multi-Table Queries and Database Helpers
-new branch
+
 ## Topics
 
 - Joins
