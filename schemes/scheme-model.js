@@ -28,12 +28,7 @@ function findSteps(id) {
         .where('s.scheme_id', '=', id)
         .orderBy('s.step_number')
 }
-//`add(scheme)`:
-// - Expects a scheme object.
-// - Inserts scheme into the database.
-// - Resolves to the newly inserted scheme, including `id`.
-// select * from schemes;
-// insert into schemes(scheme_name)Values('name');
+
 function add(schemeData) {
     return db('schemes').insert(schemeData)
         .then((id) => {
@@ -41,8 +36,11 @@ function add(schemeData) {
         })
 }
 
-function update() {
+function update(obj, id) {
     return db('schemes')
+        .update('scheme_name', obj.scheme_name)
+        .where({ id })
+        .then(() => findById(id))
 }
 
 function remove() {
