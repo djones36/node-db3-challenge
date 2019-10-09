@@ -26,10 +26,19 @@ function findSteps(id) {
         .join('schemes as sc', 's.scheme_id', 'sc.id')
         .select('s.id', 'sc.scheme_name', 's.step_number', 's.instructions')
         .where('s.scheme_id', '=', id)
+        .orderBy('s.step_number')
 }
-
-function add() {
-    return db('schemes')
+//`add(scheme)`:
+// - Expects a scheme object.
+// - Inserts scheme into the database.
+// - Resolves to the newly inserted scheme, including `id`.
+// select * from schemes;
+// insert into schemes(scheme_name)Values('name');
+function add(schemeData) {
+    return db('schemes').insert(schemeData)
+        .then((id) => {
+            return findById(id[0])
+        })
 }
 
 function update() {
